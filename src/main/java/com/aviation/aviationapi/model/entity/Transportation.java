@@ -27,7 +27,7 @@ public class Transportation {
     @Column(name = "transportation_type", nullable = false)
     private TransportationType transportationType;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "transportation_operating_days",
             joinColumns = @JoinColumn(name = "transportation_id")

@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface TransportationRepository extends JpaRepository<Transportation, Long> {
 
-    @Query("SELECT t FROM Transportation t WHERE :day MEMBER OF t.operatingDays")
+    @Query("SELECT t FROM Transportation t " +
+            "JOIN FETCH t.originLocation " +
+            "JOIN FETCH t.destinationLocation " +
+            "WHERE :day MEMBER OF t.operatingDays")
     List<Transportation> findByOperatingDayWithLocations(@Param("day") Integer day);
 }
