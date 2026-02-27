@@ -9,5 +9,6 @@
     <include file="db/changelog/changes/002-create-users-table.xml"/>
     <include file="db/changelog/changes/003-create-transportations-table.xml"/>
     <include file="db/changelog/changes/004-insert-initial-users.xml"/>
+    <include file="db/changelog/changes/005-fix-passwords.xml"/>
 
 </databaseChangeLog>

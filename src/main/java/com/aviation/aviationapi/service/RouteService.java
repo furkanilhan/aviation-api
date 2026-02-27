@@ -23,22 +23,19 @@ public class RouteService {
 
     @Cacheable(value = "routes", key = "#originId + '-' + #destinationId + '-' + #date")
     public List<RouteResponse> findRoutes(Long originId, Long destinationId, LocalDate date) {
-        // Lokasyonların var olduğunu doğrula
+
         locationService.findById(originId);
         locationService.findById(destinationId);
 
         int dayOfWeek = date.getDayOfWeek().getValue(); // 1=Mon, 7=Sun
 
-        // O gün aktif olan tüm transportları çek
         List<Transportation> activeTransports =
                 transportationRepository.findByOperatingDayWithLocations(dayOfWeek);
 
-        // Sadece uçuşları al
         List<Transportation> flights = activeTransports.stream()
                 .filter(t -> t.getTransportationType() == TransportationType.FLIGHT)
                 .toList();
 
-        // Non-flight transportlar
         List<Transportation> nonFlights = activeTransports.stream()
                 .filter(t -> t.getTransportationType() != TransportationType.FLIGHT)
                 .toList();
@@ -46,18 +43,13 @@ public class RouteService {
         List<RouteResponse> routes = new ArrayList<>();
 
         for (Transportation flight : flights) {
-            // Bu flight origin ile destination'ı match etmiyor, skip
-            // (flight zincirinin originId'den destinationId'ye gitmesi lazım
-            // ama direkt veya transferle)
 
-            // Before flight: originId -> flight.origin arasındaki non-flight'lar
             List<Transportation> beforeOptions = nonFlights.stream()
                     .filter(t -> t.getOriginLocation().getId().equals(originId))
                     .filter(t -> t.getDestinationLocation().getId()
                             .equals(flight.getOriginLocation().getId()))
                     .toList();
 
-            // After flight: flight.destination -> destinationId arasındaki non-flight'lar
             List<Transportation> afterOptions = nonFlights.stream()
                     .filter(t -> t.getOriginLocation().getId()
                             .equals(flight.getDestinationLocation().getId()))
@@ -69,14 +61,12 @@ public class RouteService {
             boolean flightEndsAtDestination =
                     flight.getDestinationLocation().getId().equals(destinationId);
 
-            // 1. Sadece flight (origin -> destination direkt uçuş)
             if (flightStartsAtOrigin && flightEndsAtDestination) {
                 routes.add(RouteResponse.builder()
                         .flight(transportationMapper.toResponse(flight))
                         .build());
             }
 
-            // 2. before + flight (transfer -> uçuş -> destination)
             if (flightEndsAtDestination) {
                 for (Transportation before : beforeOptions) {
                     routes.add(RouteResponse.builder()
@@ -86,7 +76,6 @@ public class RouteService {
                 }
             }
 
-            // 3. flight + after (origin -> uçuş -> transfer)
             if (flightStartsAtOrigin) {
                 for (Transportation after : afterOptions) {
                     routes.add(RouteResponse.builder()
@@ -96,7 +85,6 @@ public class RouteService {
                 }
             }
 
-            // 4. before + flight + after
             for (Transportation before : beforeOptions) {
                 for (Transportation after : afterOptions) {
                     routes.add(RouteResponse.builder()
