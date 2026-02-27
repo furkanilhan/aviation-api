@@ -3,11 +3,11 @@ services:
     image: postgres:15
     container_name: aviation-postgres
     environment:
-      POSTGRES_DB: aviationdb
-      POSTGRES_USER: aviation
-      POSTGRES_PASSWORD: aviation123
+      - POSTGRES_DB=aviationdb
+      - POSTGRES_USER=aviation
+      - POSTGRES_PASSWORD=aviation123
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -15,7 +15,22 @@ services:
     image: redis:7-alpine
     container_name: aviation-redis
     ports:
-      - "6379:6379"
+      - '6379:6379'
+
+  backend:
+    build: .
+    container_name: aviation-backend
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/aviationdb
+      - SPRING_DATASOURCE_USERNAME=aviation
+      - SPRING_DATASOURCE_PASSWORD=aviation123
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
 
 volumes:
   postgres_data:
