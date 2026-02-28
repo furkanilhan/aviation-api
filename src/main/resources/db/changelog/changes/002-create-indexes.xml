@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="002" author="aviation">
+
+        <createIndex tableName="locations"
+                     indexName="idx_locations_location_code"
+                     unique="true">
+            <column name="location_code"/>
+        </createIndex>
+
+        <createIndex tableName="transportations"
+                     indexName="idx_transportations_origin">
+            <column name="origin_location_id"/>
+        </createIndex>
+
+        <createIndex tableName="transportations"
+                     indexName="idx_transportations_destination">
+            <column name="destination_location_id"/>
+        </createIndex>
+
+        <createIndex tableName="transportation_operating_days"
+                     indexName="idx_operating_days_transportation_id">
+            <column name="transportation_id"/>
+        </createIndex>
+
+        <createIndex tableName="transportation_operating_days"
+                     indexName="idx_operating_days_day">
+            <column name="day"/>
+        </createIndex>
+
+        <createIndex tableName="users"
+                     indexName="idx_users_username"
+                     unique="true">
+            <column name="username"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

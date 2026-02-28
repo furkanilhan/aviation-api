@@ -4,17 +4,17 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
 
-    <changeSet id="004" author="aviation">
+    <changeSet id="003" author="aviation">
         <insert tableName="users">
             <column name="username" value="admin"/>
             <!-- password: admin123 -->
-            <column name="password" value="$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi."/>
+            <column name="password" value="$2a$10$xtUNRy5w2eH9yxWQvdB7oecurOSLdHZWTsbpWRzvRA2uY3PD8Jib."/>
             <column name="role" value="ADMIN"/>
         </insert>
         <insert tableName="users">
             <column name="username" value="agency"/>
             <!-- password: agency123 -->
-            <column name="password" value="$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi."/>
+            <column name="password" value="$2a$10$.qzVCKYZnblse7E2Jl6/r.Km7owYi09a40a1Fr9cARC9otv4dTYx6"/>
             <column name="role" value="AGENCY"/>
         </insert>
     </changeSet>

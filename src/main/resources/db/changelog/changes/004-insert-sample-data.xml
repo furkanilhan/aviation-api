@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="004" author="aviation">
+
+        <!-- LOCATIONS -->
+
+        <!-- Turkey -->
+        <insert tableName="locations">
+            <column name="name" value="Istanbul Airport"/>
+            <column name="country" value="Turkey"/>
+            <column name="city" value="Istanbul"/>
+            <column name="location_code" value="IST"/>
+            <column name="latitude" valueNumeric="41.2753"/>
+            <column name="longitude" valueNumeric="28.7519"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Sabiha Gokcen Airport"/>
+            <column name="country" value="Turkey"/>
+            <column name="city" value="Istanbul"/>
+            <column name="location_code" value="SAW"/>
+            <column name="latitude" valueNumeric="40.8986"/>
+            <column name="longitude" valueNumeric="29.3092"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Taksim Square"/>
+            <column name="country" value="Turkey"/>
+            <column name="city" value="Istanbul"/>
+            <column name="location_code" value="TKSM"/>
+            <column name="latitude" valueNumeric="41.0369"/>
+            <column name="longitude" valueNumeric="28.9850"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Ankara Esenboga Airport"/>
+            <column name="country" value="Turkey"/>
+            <column name="city" value="Ankara"/>
+            <column name="location_code" value="ESB"/>
+            <column name="latitude" valueNumeric="40.1281"/>
+            <column name="longitude" valueNumeric="32.9951"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Ankara City Center"/>
+            <column name="country" value="Turkey"/>
+            <column name="city" value="Ankara"/>
+            <column name="location_code" value="CCANK"/>
+            <column name="latitude" valueNumeric="39.9334"/>
+            <column name="longitude" valueNumeric="32.8597"/>
+        </insert>
+
+        <!-- United Kingdom -->
+        <insert tableName="locations">
+            <column name="name" value="London Heathrow Airport"/>
+            <column name="country" value="United Kingdom"/>
+            <column name="city" value="London"/>
+            <column name="location_code" value="LHR"/>
+            <column name="latitude" valueNumeric="51.4700"/>
+            <column name="longitude" valueNumeric="-0.4543"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="London Gatwick Airport"/>
+            <column name="country" value="United Kingdom"/>
+            <column name="city" value="London"/>
+            <column name="location_code" value="LGW"/>
+            <column name="latitude" valueNumeric="51.1537"/>
+            <column name="longitude" valueNumeric="-0.1821"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="London City Center"/>
+            <column name="country" value="United Kingdom"/>
+            <column name="city" value="London"/>
+            <column name="location_code" value="CCLND"/>
+            <column name="latitude" valueNumeric="51.5074"/>
+            <column name="longitude" valueNumeric="-0.1278"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Wembley Stadium"/>
+            <column name="country" value="United Kingdom"/>
+            <column name="city" value="London"/>
+            <column name="location_code" value="CCWEM"/>
+            <column name="latitude" valueNumeric="51.5560"/>
+            <column name="longitude" valueNumeric="-0.2796"/>
+        </insert>
+
+        <!-- Germany -->
+        <insert tableName="locations">
+            <column name="name" value="Frankfurt Airport"/>
+            <column name="country" value="Germany"/>
+            <column name="city" value="Frankfurt"/>
+            <column name="location_code" value="FRA"/>
+            <column name="latitude" valueNumeric="50.0379"/>
+            <column name="longitude" valueNumeric="8.5622"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Frankfurt City Center"/>
+            <column name="country" value="Germany"/>
+            <column name="city" value="Frankfurt"/>
+            <column name="location_code" value="CCFRA"/>
+            <column name="latitude" valueNumeric="50.1109"/>
+            <column name="longitude" valueNumeric="8.6821"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Berlin Brandenburg Airport"/>
+            <column name="country" value="Germany"/>
+            <column name="city" value="Berlin"/>
+            <column name="location_code" value="BER"/>
+            <column name="latitude" valueNumeric="52.3667"/>
+            <column name="longitude" valueNumeric="13.5033"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Berlin City Center"/>
+            <column name="country" value="Germany"/>
+            <column name="city" value="Berlin"/>
+            <column name="location_code" value="CCBER"/>
+            <column name="latitude" valueNumeric="52.5200"/>
+            <column name="longitude" valueNumeric="13.4050"/>
+        </insert>
+
+        <!-- France -->
+        <insert tableName="locations">
+            <column name="name" value="Paris Charles de Gaulle Airport"/>
+            <column name="country" value="France"/>
+            <column name="city" value="Paris"/>
+            <column name="location_code" value="CDG"/>
+            <column name="latitude" valueNumeric="49.0097"/>
+            <column name="longitude" valueNumeric="2.5479"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Paris City Center"/>
+            <column name="country" value="France"/>
+            <column name="city" value="Paris"/>
+            <column name="location_code" value="CCPAR"/>
+            <column name="latitude" valueNumeric="48.8566"/>
+            <column name="longitude" valueNumeric="2.3522"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Eiffel Tower"/>
+            <column name="country" value="France"/>
+            <column name="city" value="Paris"/>
+            <column name="location_code" value="CCEFT"/>
+            <column name="latitude" valueNumeric="48.8584"/>
+            <column name="longitude" valueNumeric="2.2945"/>
+        </insert>
+
+        <!-- USA -->
+        <insert tableName="locations">
+            <column name="name" value="New York JFK Airport"/>
+            <column name="country" value="USA"/>
+            <column name="city" value="New York"/>
+            <column name="location_code" value="JFK"/>
+            <column name="latitude" valueNumeric="40.6413"/>
+            <column name="longitude" valueNumeric="-73.7781"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="Manhattan City Center"/>
+            <column name="country" value="USA"/>
+            <column name="city" value="New York"/>
+            <column name="location_code" value="CCNYC"/>
+            <column name="latitude" valueNumeric="40.7831"/>
+            <column name="longitude" valueNumeric="-73.9712"/>
+        </insert>
+        <insert tableName="locations">
+            <column name="name" value="New York Newark Airport"/>
+            <column name="country" value="USA"/>
+            <column name="city" value="New York"/>
+            <column name="location_code" value="EWR"/>
+            <column name="latitude" valueNumeric="40.6895"/>
+            <column name="longitude" valueNumeric="-74.1745"/>
+        </insert>
+
+        <!-- TRANSPORTATIONS -->
+
+        <!-- Istanbul transfers -->
+        <!-- Taksim -> IST -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='TKSM')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="transportation_type" value="BUS"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- Taksim -> IST UBER -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='TKSM')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="transportation_type" value="UBER"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='IST') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- Taksim -> SAW BUS -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='TKSM')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='SAW')"/>
+            <column name="transportation_type" value="BUS"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='TKSM') AND destination_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- Ankara City Center -> ESB BUS -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCANK')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='ESB')"/>
+            <column name="transportation_type" value="BUS"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CCANK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- FLIGHTS -->
+        <!-- IST -> LHR Mon Wed Fri -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+
+        <!-- SAW -> LHR Tue Thu Sat -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='SAW')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+
+        <!-- IST -> CDG every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CDG')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- IST -> FRA Mon Tue Wed Thu Fri -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='FRA')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+
+        <!-- IST -> BER Tue Thu Sat -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='BER')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='BER') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='BER') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='BER') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+
+        <!-- ESB -> LHR Mon Wed Fri -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='ESB')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='ESB') AND destination_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+
+        <!-- IST -> JFK Mon Thu -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='IST')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='JFK')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='IST') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+
+        <!-- SAW -> JFK Wed Sat -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='SAW')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='JFK')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='SAW') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+
+        <!-- LHR -> JFK every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='JFK')"/>
+            <column name="transportation_type" value="FLIGHT"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND transportation_type='FLIGHT')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- ARRIVAL TRANSFERS -->
+
+        <!-- LHR -> London City Center SUBWAY every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCLND')"/>
+            <column name="transportation_type" value="SUBWAY"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCLND') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- LHR -> Wembley BUS every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCWEM')"/>
+            <column name="transportation_type" value="BUS"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='BUS')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- LHR -> Wembley UBER every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='LHR')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCWEM')"/>
+            <column name="transportation_type" value="UBER"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='LHR') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCWEM') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- CDG -> Paris City Center SUBWAY every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CDG')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCPAR')"/>
+            <column name="transportation_type" value="SUBWAY"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCPAR') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- CDG -> Eiffel Tower UBER every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CDG')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCEFT')"/>
+            <column name="transportation_type" value="UBER"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='CDG') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCEFT') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- FRA -> Frankfurt City Center SUBWAY every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='FRA')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCFRA')"/>
+            <column name="transportation_type" value="SUBWAY"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='FRA') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCFRA') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- BER -> Berlin City Center SUBWAY every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='BER')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCBER')"/>
+            <column name="transportation_type" value="SUBWAY"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='BER') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCBER') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- JFK -> Manhattan SUBWAY every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='JFK')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCNYC')"/>
+            <column name="transportation_type" value="SUBWAY"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='SUBWAY')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+        <!-- JFK -> Manhattan UBER every day -->
+        <insert tableName="transportations">
+            <column name="origin_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='JFK')"/>
+            <column name="destination_location_id" valueComputed="(SELECT id FROM locations WHERE location_code='CCNYC')"/>
+            <column name="transportation_type" value="UBER"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="1"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="2"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="3"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="4"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="5"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="6"/>
+        </insert>
+        <insert tableName="transportation_operating_days">
+            <column name="transportation_id" valueComputed="(SELECT id FROM transportations WHERE origin_location_id=(SELECT id FROM locations WHERE location_code='JFK') AND destination_location_id=(SELECT id FROM locations WHERE location_code='CCNYC') AND transportation_type='UBER')"/>
+            <column name="day" valueNumeric="7"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
