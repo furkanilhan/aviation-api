@@ -15,4 +15,6 @@ public class LocationResponse implements Serializable {
     private String country;
     private String city;
     private String locationCode;
+    private Double latitude;
+    private Double longitude;
 }

@@ -27,4 +27,10 @@ public class Location {
 
     @Column(name = "location_code", nullable = false, unique = true)
     private String locationCode;
+
+    @Column
+    private Double latitude;
+
+    @Column
+    private Double longitude;
 }

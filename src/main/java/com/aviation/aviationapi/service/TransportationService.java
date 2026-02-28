@@ -21,7 +21,8 @@ public class TransportationService {
     private final TransportationMapper transportationMapper;
 
     public List<TransportationResponse> getAllTransportations() {
-        return transportationMapper.toResponseList(transportationRepository.findAll());
+        return transportationMapper.toResponseList(
+                transportationRepository.findAllWithLocations());
     }
 
     public TransportationResponse getTransportationById(Long id) {
@@ -31,6 +32,11 @@ public class TransportationService {
     public TransportationResponse createTransportation(TransportationRequest request) {
         validateOperatingDays(request.getOperatingDays());
 
+        if (request.getOriginLocationId().equals(request.getDestinationLocationId())) {
+            throw new BusinessException(
+                    "Origin and destination cannot be the same", HttpStatus.BAD_REQUEST);
+        }
+
         Transportation transportation = Transportation.builder()
                 .originLocation(locationService.findById(request.getOriginLocationId()))
                 .destinationLocation(locationService.findById(request.getDestinationLocationId()))
@@ -38,7 +44,11 @@ public class TransportationService {
                 .operatingDays(request.getOperatingDays())
                 .build();
 
-        return transportationMapper.toResponse(transportationRepository.save(transportation));
+        Transportation saved = transportationRepository.save(transportation);
+
+        return transportationMapper.toResponse(
+                transportationRepository.findByIdWithLocations(saved.getId())
+                        .orElseThrow());
     }
 
     public TransportationResponse updateTransportation(Long id, TransportationRequest request) {
@@ -50,7 +60,13 @@ public class TransportationService {
         existing.setTransportationType(request.getTransportationType());
         existing.setOperatingDays(request.getOperatingDays());
 
-        return transportationMapper.toResponse(transportationRepository.save(existing));
+        transportationRepository.save(existing);
+
+        Transportation saved = transportationRepository.findByIdWithLocations(id)
+                .orElseThrow(() -> new BusinessException(
+                        "Transportation not found with id: " + id, HttpStatus.NOT_FOUND));
+
+        return transportationMapper.toResponse(saved);
     }
 
     public void deleteTransportation(Long id) {

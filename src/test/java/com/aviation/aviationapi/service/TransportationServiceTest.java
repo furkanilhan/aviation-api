@@ -76,14 +76,14 @@ class TransportationServiceTest {
 
     @Test
     void getAllTransportations_ShouldReturnAll() {
-        when(transportationRepository.findAll()).thenReturn(List.of(transportation));
+        when(transportationRepository.findAllWithLocations()).thenReturn(List.of(transportation));
         when(transportationMapper.toResponseList(List.of(transportation)))
                 .thenReturn(List.of(transportationResponse));
 
         List<TransportationResponse> result = transportationService.getAllTransportations();
 
         assertThat(result).hasSize(1);
-        verify(transportationRepository).findAll();
+        verify(transportationRepository).findAllWithLocations();
     }
 
     @Test
@@ -111,6 +111,8 @@ class TransportationServiceTest {
         when(locationService.findById(1L)).thenReturn(origin);
         when(locationService.findById(2L)).thenReturn(destination);
         when(transportationRepository.save(any())).thenReturn(transportation);
+        when(transportationRepository.findByIdWithLocations(any()))
+                .thenReturn(Optional.of(transportation));
         when(transportationMapper.toResponse(transportation)).thenReturn(transportationResponse);
 
         TransportationResponse result = transportationService.createTransportation(transportationRequest);

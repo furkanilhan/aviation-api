@@ -23,4 +23,7 @@ public class LocationRequest {
     @NotBlank(message = "Location code is required")
     @Size(min = 3, max = 10, message = "Location code must be between 3 and 10 characters")
     private String locationCode;
+
+    private Double latitude;
+    private Double longitude;
 }
