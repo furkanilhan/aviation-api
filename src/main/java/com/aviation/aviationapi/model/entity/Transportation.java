@@ -4,12 +4,13 @@ import com.aviation.aviationapi.model.enums.TransportationType;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "transportations")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-public class Transportation {
+public class Transportation extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +28,11 @@ public class Transportation {
     @Column(name = "transportation_type", nullable = false)
     private TransportationType transportationType;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
             name = "transportation_operating_days",
             joinColumns = @JoinColumn(name = "transportation_id")
     )
     @Column(name = "day")
-    private List<Integer> operatingDays;
+    private Set<Integer> operatingDays = new HashSet<>();
 }

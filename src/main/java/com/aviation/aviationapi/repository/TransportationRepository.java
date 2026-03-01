@@ -12,18 +12,23 @@ public interface TransportationRepository extends JpaRepository<Transportation, 
 
     @Query("SELECT t FROM Transportation t " +
             "JOIN FETCH t.originLocation " +
-            "JOIN FETCH t.destinationLocation")
+            "JOIN FETCH t.destinationLocation " +
+            "LEFT JOIN FETCH t.operatingDays" +
+            "ORDER BY t.id DESC")
     List<Transportation> findAllWithLocations();
 
     @Query("SELECT t FROM Transportation t " +
             "JOIN FETCH t.originLocation " +
             "JOIN FETCH t.destinationLocation " +
+            "LEFT JOIN FETCH t.operatingDays " +
             "WHERE t.id = :id")
     Optional<Transportation> findByIdWithLocations(@Param("id") Long id);
 
-    @Query("SELECT t FROM Transportation t " +
+    @Query("SELECT DISTINCT t FROM Transportation t " +
             "JOIN FETCH t.originLocation " +
             "JOIN FETCH t.destinationLocation " +
-            "WHERE :day MEMBER OF t.operatingDays")
-    List<Transportation> findByOperatingDayWithLocations(@Param("day") Integer day);
+            "LEFT JOIN FETCH t.operatingDays " +
+            "WHERE :day MEMBER OF t.operatingDays" +
+            "ORDER BY t.id DESC")
+    List<Transportation> findByOperatingDayWithLocations(@Param("day") int day);
 }

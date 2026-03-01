@@ -17,12 +17,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TransportationServiceTest {
@@ -57,20 +57,20 @@ class TransportationServiceTest {
                 .originLocation(origin)
                 .destinationLocation(destination)
                 .transportationType(TransportationType.FLIGHT)
-                .operatingDays(List.of(1, 2, 3, 4, 5))
+                .operatingDays(Set.of(1, 2, 3, 4, 5))
                 .build();
 
         transportationResponse = TransportationResponse.builder()
                 .id(1L)
                 .transportationType(TransportationType.FLIGHT)
-                .operatingDays(List.of(1, 2, 3, 4, 5))
+                .operatingDays(Set.of(1, 2, 3, 4, 5))
                 .build();
 
         transportationRequest = TransportationRequest.builder()
                 .originLocationId(1L)
                 .destinationLocationId(2L)
                 .transportationType(TransportationType.FLIGHT)
-                .operatingDays(List.of(1, 2, 3, 4, 5))
+                .operatingDays(Set.of(1, 2, 3, 4, 5))
                 .build();
     }
 
@@ -88,7 +88,7 @@ class TransportationServiceTest {
 
     @Test
     void getTransportationById_WhenExists_ShouldReturn() {
-        when(transportationRepository.findById(1L)).thenReturn(Optional.of(transportation));
+        when(transportationRepository.findByIdWithLocations(1L)).thenReturn(Optional.of(transportation));
         when(transportationMapper.toResponse(transportation)).thenReturn(transportationResponse);
 
         TransportationResponse result = transportationService.getTransportationById(1L);
@@ -99,7 +99,7 @@ class TransportationServiceTest {
 
     @Test
     void getTransportationById_WhenNotExists_ShouldThrowException() {
-        when(transportationRepository.findById(99L)).thenReturn(Optional.empty());
+        when(transportationRepository.findByIdWithLocations(99L)).thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> transportationService.getTransportationById(99L))
                 .isInstanceOf(BusinessException.class)
@@ -110,9 +110,12 @@ class TransportationServiceTest {
     void createTransportation_ShouldCreateSuccessfully() {
         when(locationService.findById(1L)).thenReturn(origin);
         when(locationService.findById(2L)).thenReturn(destination);
-        when(transportationRepository.save(any())).thenReturn(transportation);
-        when(transportationRepository.findByIdWithLocations(any()))
-                .thenReturn(Optional.of(transportation));
+
+        // Save işlemi entity döner
+        when(transportationRepository.save(any(Transportation.class))).thenReturn(transportation);
+
+        when(transportationRepository.findByIdWithLocations(any())).thenReturn(Optional.of(transportation));
+
         when(transportationMapper.toResponse(transportation)).thenReturn(transportationResponse);
 
         TransportationResponse result = transportationService.createTransportation(transportationRequest);
@@ -122,34 +125,23 @@ class TransportationServiceTest {
     }
 
     @Test
-    void createTransportation_WithInvalidOperatingDays_ShouldThrowException() {
-        TransportationRequest invalidRequest = TransportationRequest.builder()
-                .originLocationId(1L)
-                .destinationLocationId(2L)
-                .transportationType(TransportationType.FLIGHT)
-                .operatingDays(List.of(0, 8)) // 0 ve 8 geçersiz
-                .build();
-
-        assertThatThrownBy(() -> transportationService.createTransportation(invalidRequest))
-                .isInstanceOf(BusinessException.class)
-                .hasMessageContaining("Operating days must be between 1");
-    }
-
-    @Test
     void deleteTransportation_WhenExists_ShouldDelete() {
-        when(transportationRepository.findById(1L)).thenReturn(Optional.of(transportation));
+        when(transportationRepository.existsById(1L)).thenReturn(true);
 
         transportationService.deleteTransportation(1L);
 
         verify(transportationRepository).deleteById(1L);
+        verify(transportationRepository, never()).findById(1L);
     }
 
     @Test
     void deleteTransportation_WhenNotExists_ShouldThrowException() {
-        when(transportationRepository.findById(99L)).thenReturn(Optional.empty());
+        when(transportationRepository.existsById(99L)).thenReturn(false);
 
         assertThatThrownBy(() -> transportationService.deleteTransportation(99L))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("Transportation not found with id: 99");
+
+        verify(transportationRepository, never()).deleteById(anyLong());
     }
 }

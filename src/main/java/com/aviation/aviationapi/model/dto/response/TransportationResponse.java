@@ -4,7 +4,7 @@ import com.aviation.aviationapi.model.enums.TransportationType;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,6 +16,6 @@ public class TransportationResponse implements Serializable {
     private LocationResponse originLocation;
     private LocationResponse destinationLocation;
     private TransportationType transportationType;
-    private List<Integer> operatingDays;
+    private Set<Integer> operatingDays;
 }
 

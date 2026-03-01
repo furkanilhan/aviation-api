@@ -9,16 +9,19 @@ import com.aviation.aviationapi.repository.TransportationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class TransportationService {
 
     private final TransportationRepository transportationRepository;
     private final LocationService locationService;
     private final TransportationMapper transportationMapper;
+    private static final String TRANSPORTATION_NOT_FOUND = "Transportation not found with id: ";
 
     public List<TransportationResponse> getAllTransportations() {
         return transportationMapper.toResponseList(
@@ -26,17 +29,15 @@ public class TransportationService {
     }
 
     public TransportationResponse getTransportationById(Long id) {
-        return transportationMapper.toResponse(findById(id));
+        Transportation transportation = transportationRepository
+                .findByIdWithLocations(id)
+                .orElseThrow(() -> new BusinessException(
+                        TRANSPORTATION_NOT_FOUND + id, HttpStatus.NOT_FOUND));
+        return transportationMapper.toResponse(transportation);
     }
 
+    @Transactional
     public TransportationResponse createTransportation(TransportationRequest request) {
-        validateOperatingDays(request.getOperatingDays());
-
-        if (request.getOriginLocationId().equals(request.getDestinationLocationId())) {
-            throw new BusinessException(
-                    "Origin and destination cannot be the same", HttpStatus.BAD_REQUEST);
-        }
-
         Transportation transportation = Transportation.builder()
                 .originLocation(locationService.findById(request.getOriginLocationId()))
                 .destinationLocation(locationService.findById(request.getDestinationLocationId()))
@@ -44,17 +45,16 @@ public class TransportationService {
                 .operatingDays(request.getOperatingDays())
                 .build();
 
-        Transportation saved = transportationRepository.save(transportation);
+        transportationRepository.save(transportation);
 
         return transportationMapper.toResponse(
-                transportationRepository.findByIdWithLocations(saved.getId())
+                transportationRepository.findByIdWithLocations(transportation.getId())
                         .orElseThrow());
     }
 
+    @Transactional
     public TransportationResponse updateTransportation(Long id, TransportationRequest request) {
-        validateOperatingDays(request.getOperatingDays());
-
-        Transportation existing = findById(id);
+        Transportation existing = findByIdInternal(id);
         existing.setOriginLocation(locationService.findById(request.getOriginLocationId()));
         existing.setDestinationLocation(locationService.findById(request.getDestinationLocationId()));
         existing.setTransportationType(request.getTransportationType());
@@ -62,33 +62,23 @@ public class TransportationService {
 
         transportationRepository.save(existing);
 
-        Transportation saved = transportationRepository.findByIdWithLocations(id)
-                .orElseThrow(() -> new BusinessException(
-                        "Transportation not found with id: " + id, HttpStatus.NOT_FOUND));
-
-        return transportationMapper.toResponse(saved);
+        return transportationMapper.toResponse(
+                transportationRepository.findByIdWithLocations(id)
+                        .orElseThrow());
     }
 
+    @Transactional
     public void deleteTransportation(Long id) {
-        findById(id);
+        if (!transportationRepository.existsById(id)) {
+            throw new BusinessException(
+                    TRANSPORTATION_NOT_FOUND + id, HttpStatus.NOT_FOUND);
+        }
         transportationRepository.deleteById(id);
     }
 
-    public Transportation findById(Long id) {
-        return transportationRepository.findById(id)
+    private Transportation findByIdInternal(Long id) {
+        return transportationRepository.findByIdWithLocations(id)
                 .orElseThrow(() -> new BusinessException(
-                        "Transportation not found with id: " + id,
-                        HttpStatus.NOT_FOUND
-                ));
-    }
-
-    private void validateOperatingDays(List<Integer> days) {
-        boolean invalid = days.stream().anyMatch(d -> d < 1 || d > 7);
-        if (invalid) {
-            throw new BusinessException(
-                    "Operating days must be between 1 (Monday) and 7 (Sunday)",
-                    HttpStatus.BAD_REQUEST
-            );
-        }
+                        TRANSPORTATION_NOT_FOUND + id, HttpStatus.NOT_FOUND));
     }
 }
