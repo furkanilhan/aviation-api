@@ -4,12 +4,17 @@ services:
     container_name: aviation-postgres
     environment:
       - POSTGRES_DB=aviationdb
-      - POSTGRES_USER=aviation
-      - POSTGRES_PASSWORD=aviation123
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d aviationdb" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis:7-alpine
@@ -23,14 +28,18 @@ services:
     ports:
       - '8080:8080'
     environment:
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:http://localhost:5173}
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/aviationdb
-      - SPRING_DATASOURCE_USERNAME=aviation
-      - SPRING_DATASOURCE_PASSWORD=aviation123
+      - JWT_SECRET=${JWT_SECRET}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
       - SPRING_DATA_REDIS_HOST=redis
       - SPRING_DATA_REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
 volumes:
   postgres_data:

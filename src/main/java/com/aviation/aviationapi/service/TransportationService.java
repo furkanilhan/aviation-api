@@ -7,6 +7,7 @@ import com.aviation.aviationapi.model.dto.response.TransportationResponse;
 import com.aviation.aviationapi.model.entity.Transportation;
 import com.aviation.aviationapi.repository.TransportationRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,7 @@ public class TransportationService {
         return transportationMapper.toResponse(transportation);
     }
 
+    @CacheEvict(value = "routes", allEntries = true)
     @Transactional
     public TransportationResponse createTransportation(TransportationRequest request) {
         Transportation transportation = Transportation.builder()
@@ -52,6 +54,7 @@ public class TransportationService {
                         .orElseThrow());
     }
 
+    @CacheEvict(value = "routes", allEntries = true)
     @Transactional
     public TransportationResponse updateTransportation(Long id, TransportationRequest request) {
         Transportation existing = findByIdInternal(id);
@@ -67,6 +70,7 @@ public class TransportationService {
                         .orElseThrow());
     }
 
+    @CacheEvict(value = "routes", allEntries = true)
     @Transactional
     public void deleteTransportation(Long id) {
         if (!transportationRepository.existsById(id)) {

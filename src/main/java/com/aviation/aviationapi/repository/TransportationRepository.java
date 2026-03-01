@@ -10,10 +10,10 @@ import java.util.Optional;
 
 public interface TransportationRepository extends JpaRepository<Transportation, Long> {
 
-    @Query("SELECT t FROM Transportation t " +
+    @Query("SELECT DISTINCT t FROM Transportation t " +
             "JOIN FETCH t.originLocation " +
             "JOIN FETCH t.destinationLocation " +
-            "LEFT JOIN FETCH t.operatingDays" +
+            "LEFT JOIN FETCH t.operatingDays " +
             "ORDER BY t.id DESC")
     List<Transportation> findAllWithLocations();
 
@@ -28,7 +28,7 @@ public interface TransportationRepository extends JpaRepository<Transportation, 
             "JOIN FETCH t.originLocation " +
             "JOIN FETCH t.destinationLocation " +
             "LEFT JOIN FETCH t.operatingDays " +
-            "WHERE :day MEMBER OF t.operatingDays" +
+            "WHERE :day MEMBER OF t.operatingDays " +
             "ORDER BY t.id DESC")
     List<Transportation> findByOperatingDayWithLocations(@Param("day") int day);
 }

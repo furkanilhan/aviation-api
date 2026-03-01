@@ -7,6 +7,7 @@ import com.aviation.aviationapi.model.dto.response.LocationResponse;
 import com.aviation.aviationapi.model.entity.Location;
 import com.aviation.aviationapi.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ public class LocationService {
 
     private final LocationRepository locationRepository;
     private final LocationMapper locationMapper;
+    private static final String LOCATION_NOT_FOUND = "Location not found with id: ";
 
     public List<LocationResponse> getAllLocations() {
         return locationMapper.toResponseList(
@@ -30,6 +32,7 @@ public class LocationService {
         return locationMapper.toResponse(findById(id));
     }
 
+    @CacheEvict(value = "routes", allEntries = true)
     @Transactional
     public LocationResponse createLocation(LocationRequest request) {
         if (locationRepository.existsByLocationCode(request.getLocationCode())) {
@@ -42,6 +45,7 @@ public class LocationService {
         return locationMapper.toResponse(locationRepository.save(location));
     }
 
+    @CacheEvict(value = "routes", allEntries = true)
     @Transactional
     public LocationResponse updateLocation(Long id, LocationRequest request) {
         Location existing = findById(id);
@@ -57,6 +61,7 @@ public class LocationService {
         return locationMapper.toResponse(locationRepository.save(existing));
     }
 
+    @CacheEvict(value = "routes", allEntries = true)
     @Transactional
     public void deleteLocation(Long id) {
         findById(id);
@@ -66,7 +71,7 @@ public class LocationService {
     public Location findById(Long id) {
         return locationRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(
-                        "Location not found with id: " + id,
+                        LOCATION_NOT_FOUND + id,
                         HttpStatus.NOT_FOUND
                 ));
     }

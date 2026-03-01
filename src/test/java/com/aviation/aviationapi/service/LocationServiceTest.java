@@ -65,7 +65,7 @@ class LocationServiceTest {
 
     @Test
     void getAllLocations_ShouldReturnAllLocations() {
-        when(locationRepository.findAll()).thenReturn(List.of(location));
+        when(locationRepository.findAllByOrderByIdDesc()).thenReturn(List.of(location));
         when(locationMapper.toResponseList(List.of(location)))
                 .thenReturn(List.of(locationResponse));
 
@@ -73,7 +73,7 @@ class LocationServiceTest {
 
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getLocationCode()).isEqualTo("IST");
-        verify(locationRepository).findAll();
+        verify(locationRepository).findAllByOrderByIdDesc();
     }
 
     @Test

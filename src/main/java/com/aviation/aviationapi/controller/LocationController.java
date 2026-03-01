@@ -7,12 +7,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -37,14 +36,8 @@ public class LocationController {
     @PostMapping
     public ResponseEntity<LocationResponse> createLocation(
             @Valid @RequestBody LocationRequest request) {
-        LocationResponse response = locationService.createLocation(request);
-
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(response.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(locationService.createLocation(request));
     }
 
     @PutMapping("/{id}")
