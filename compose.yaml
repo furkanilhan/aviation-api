@@ -28,7 +28,7 @@ services:
     ports:
       - '8080:8080'
     environment:
-      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:5173}
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/aviationdb
       - JWT_SECRET=${JWT_SECRET}
       - SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
