@@ -6,7 +6,6 @@ import com.aviation.aviationapi.model.dto.response.RouteResponse;
 import com.aviation.aviationapi.model.entity.Transportation;
 import com.aviation.aviationapi.model.enums.TransportationType;
 import com.aviation.aviationapi.repository.TransportationRepository;
-import com.aviation.aviationapi.validation.RouteFilterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +29,6 @@ public class RouteService {
     private final TransportationRepository transportationRepository;
     private final LocationService locationService;
     private final TransportationMapper transportationMapper;
-    private final RouteFilterService routeFilterService;
 
     @Cacheable(value = "routes", key = "#originId + '-' + #destinationId + '-' + #date")
     public List<RouteResponse> findRoutes(Long originId, Long destinationId, LocalDate date) {
@@ -104,33 +102,24 @@ public class RouteService {
         List<RouteResponse> routes = new ArrayList<>();
 
         if (flightStartsAtOrigin && flightEndsAtDestination) {
-            addIfValid(routes, null, flight, null);
+            routes.add(buildRoute(null, flight, null));
         }
 
         if (flightEndsAtDestination) {
-            beforeOptions.forEach(before -> addIfValid(routes, before, flight, null));
+            beforeOptions.forEach(before -> routes.add(buildRoute(before, flight, null)));
         }
 
         if (flightStartsAtOrigin) {
-            afterOptions.forEach(after -> addIfValid(routes, null, flight, after));
+            afterOptions.forEach(after -> routes.add(buildRoute(null, flight, after)));
         }
 
         for (Transportation before : beforeOptions) {
             for (Transportation after : afterOptions) {
-                addIfValid(routes, before, flight, after);
+                routes.add(buildRoute(before, flight, after));
             }
         }
 
         return routes;
-    }
-
-    private void addIfValid(List<RouteResponse> routes,
-                            Transportation before,
-                            Transportation flight,
-                            Transportation after) {
-        if (routeFilterService.isValidRoute(before, flight, after)) {
-            routes.add(buildRoute(before, flight, after));
-        }
     }
 
     private RouteResponse buildRoute(Transportation before,

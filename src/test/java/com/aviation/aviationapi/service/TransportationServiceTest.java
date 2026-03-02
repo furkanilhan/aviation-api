@@ -111,11 +111,8 @@ class TransportationServiceTest {
         when(locationService.findById(1L)).thenReturn(origin);
         when(locationService.findById(2L)).thenReturn(destination);
 
-        // Save işlemi entity döner
         when(transportationRepository.save(any(Transportation.class))).thenReturn(transportation);
-
         when(transportationRepository.findByIdWithLocations(any())).thenReturn(Optional.of(transportation));
-
         when(transportationMapper.toResponse(transportation)).thenReturn(transportationResponse);
 
         TransportationResponse result = transportationService.createTransportation(transportationRequest);
