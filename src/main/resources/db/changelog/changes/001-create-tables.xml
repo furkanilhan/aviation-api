@@ -88,6 +88,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-
+        <addUniqueConstraint
+            tableName="transportation_operating_days"
+            columnNames="transportation_id, day"
+            constraintName="uq_transportation_day"/>
     </changeSet>
 </databaseChangeLog>
